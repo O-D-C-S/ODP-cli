@@ -17,7 +17,7 @@ string encrypt(string plain, CryptoPP::SecByteBlock &key) {
             e, new CryptoPP::Base64Encoder(new CryptoPP::StringSink(encrypted), false),
             CryptoPP::StreamTransformationFilter::PKCS_PADDING
     )); // AES_256_ECB encrypt
-    encrypted = "odp://" + encrypted.substr(0, encrypted.size() - 1) + "/"; // add odp header (odp://.../)
+    encrypted = "odp://" + encrypted.substr(0, encrypted.size()) + "/"; // add odp header (odp://.../)
     return encrypted;
 }
 
