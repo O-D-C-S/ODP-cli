@@ -8,12 +8,13 @@ using namespace std;
 
 string encrypt(string plain, CryptoPP::SecByteBlock &key) {
     string b64, encrypted;
-    CryptoPP::StringSource(plain, true, new CryptoPP::Base64Encoder(new CryptoPP::StringSink(b64))); // inner base64
+    CryptoPP::StringSource(plain, true,
+                           new CryptoPP::Base64Encoder(new CryptoPP::StringSink(b64), false)); // inner base64
     b64 = "local@" + b64; // add Fast-ODP signature (local@)
     CryptoPP::ECB_Mode<CryptoPP::AES>::Encryption e;
     e.SetKey(key, key.size()); // initialize encrypt instance
     CryptoPP::StringSource(b64, true, new CryptoPP::StreamTransformationFilter(
-            e, new CryptoPP::Base64Encoder(new CryptoPP::StringSink(encrypted)),
+            e, new CryptoPP::Base64Encoder(new CryptoPP::StringSink(encrypted), false),
             CryptoPP::StreamTransformationFilter::PKCS_PADDING
     )); // AES_256_ECB encrypt
     encrypted = "odp://" + encrypted.substr(0, encrypted.size() - 1) + "/"; // add odp header (odp://.../)
