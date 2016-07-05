@@ -6,4 +6,14 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(SOURCE_FILES main.cpp)
 add_executable(fastdriver ${SOURCE_FILES})
 
-target_link_libraries(fastdriver cryptopp pthread)
+execute_process(COMMAND git describe --tags OUTPUT_VARIABLE VERSION OUTPUT_STRIP_TRAILING_WHITESPACE)
+if ("${VERSION}" STREQUAL "")
+    set(VERSION "v0.0")
+endif ()
+MESSAGE("Version: ${VERSION}")
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
+
+add_library(fastodp lib/fastodp.cpp)
+
+target_link_libraries(fastdriver cryptopp fastodp)
