@@ -12,7 +12,7 @@ CryptoPP::SecByteBlock makeKey(std::string keyString) {
     return key;
 }
 
-std::string fastdriver::encrypt(std::string plain, std::string keyString) {
+std::string FastODP::encrypt(std::string plain, std::string keyString) {
     std::string b64, encrypted;
     CryptoPP::SecByteBlock key = makeKey(keyString);
     CryptoPP::StringSource(plain, true,
@@ -28,7 +28,7 @@ std::string fastdriver::encrypt(std::string plain, std::string keyString) {
     return encrypted;
 }
 
-std::string fastdriver::decrypt(
+std::string FastODP::decrypt(
         std::string encrypted,
         std::string keyString) {
     CryptoPP::SecByteBlock key = makeKey(keyString);

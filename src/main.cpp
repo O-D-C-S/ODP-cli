@@ -19,12 +19,12 @@ int main(int argc, const char *argv[]) {
     std::string output;
 
     if (strcmp(argv[1], "-e") == 0) {
-        output = fastdriver::encrypt(rawText, keyString);
+        output = FastODP::encrypt(rawText, keyString);
     }
     else {
         std::string encrypted = rawText;
         try {
-            output = fastdriver::decrypt(encrypted, keyString);
+            output = FastODP::decrypt(encrypted, keyString);
         } catch (CryptoPP::InvalidCiphertext invalidCiphertext) {
             std::cout << "failed to decrypt" << std::endl;
             return 2;
