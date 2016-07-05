@@ -1,5 +1,5 @@
-#ifndef FASTDRIVER_H
-#define FASTDRIVER_H
+#ifndef FASTODP_H
+#define FASTODP_H
 
 #include <string>
 #include <cryptopp/aes.h>
@@ -8,4 +8,4 @@ namespace fastdriver{
     std::string decrypt(std::string, std::string);
 }
 
-#endif //FASTDRIVER_H
+#endif //FASTODP_H
