@@ -2,6 +2,7 @@
 #include <cryptopp/modes.h>
 #include <cryptopp/filters.h>
 #include <cryptopp/base64.h>
+#include <cryptopp/aes.h>
 
 CryptoPP::SecByteBlock makeKey(std::string keyString) {
     keyString += "odpodpodpodpodpodpodpodpodpodpodpodpodp";
