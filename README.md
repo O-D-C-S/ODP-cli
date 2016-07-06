@@ -22,4 +22,3 @@ make
 
 - `fastdriver -e [plain text] [key]`
 - `fastdriver -d [encrypted text] [key]`
-
