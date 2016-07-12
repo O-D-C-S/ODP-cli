@@ -1,10 +1,5 @@
-sudo: required
-dist: trusty
-
-addons:
-  apt:
-    packages:
-     - libcrypto++-dev
-language: c++
+install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -y -qq libcrypto++-dev
 script:
   - cd src && mkdir build && cd build && cmake .. && make
