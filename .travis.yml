@@ -1,0 +1,10 @@
+sudo: required
+dist: trusty
+
+addons:
+  apt:
+    packages:
+     - libcrypto++-dev
+language: c++
+script:
+  - cd src && mkdir build && cd build && cmake .. && make
