@@ -18,6 +18,8 @@ add_library(fastodp SHARED lib/fastodp.cpp)
 add_library(fastodpStatic STATIC lib/fastodp.cpp)
 set_target_properties(fastodpStatic PROPERTIES OUTPUT_NAME fastodp)
 
+target_link_libraries(fastodp cryptopp)
+target_link_libraries(fastodpStatic cryptopp)
 target_link_libraries(fastdriver cryptopp fastodp)
 
 if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
