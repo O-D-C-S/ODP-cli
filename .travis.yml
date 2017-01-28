@@ -1,6 +1,6 @@
 dist: trusty
 install:
   - sudo apt-get update -qq
-  - sudo apt-get install -y -qq libcrypto++-dev
+  - sudo apt-get install -y -qq libcrypto++-dev libboost-program-options-dev
 script:
   - cd src && mkdir build && cd build && cmake .. && make

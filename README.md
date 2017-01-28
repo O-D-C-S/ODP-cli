@@ -10,6 +10,7 @@ fastdriver - Command line [Fast-ODP](https://github.com/O-D-C-S/Old-Driver-Proto
 - crypto++
 - cmake
 - pthread
+- boost::program_options
 
 ## Build
 
