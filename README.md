@@ -10,6 +10,7 @@ fastdriver - Command line [Fast-ODP](https://github.com/O-D-C-S/Old-Driver-Proto
 - crypto++
 - cmake
 - pthread
+- boost::program_options
 
 ## Build
 
@@ -21,6 +22,13 @@ make
 ```
 
 # Usage
+```
+Usage: fastdriver [OPTION]... [FILE]
+With no FILE, or when FILE is -, read standard input.
 
-- `fastdriver -e [plain text] [key]`
-- `fastdriver -d [encrypted text] [key]`
+Options:
+  -h [ --help ]         produce help message
+  -e [ --encrypt ]      to encrypt message
+  -d [ --decrypt ]      to decrypt message
+  -k [ --key ] arg      key to encrypt/decrypt (required)
+```
