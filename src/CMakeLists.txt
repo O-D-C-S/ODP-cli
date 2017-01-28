@@ -1,7 +1,7 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
+set (CMAKE_CXX_STANDARD 11)
 project(fastdriver)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 set(SOURCE_FILES main.cpp)
 add_executable(fastdriver ${SOURCE_FILES})
@@ -12,14 +12,17 @@ if ("${VERSION}" STREQUAL "")
 endif ()
 MESSAGE("Version: ${VERSION}")
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
+find_package(Boost COMPONENTS program_options REQUIRED)
+
+include_directories(${Boost_INCOUDE_DIRS})
+target_link_libraries(fastdriver ${Boost_LIBRARIES})
 
 add_library(fastodp SHARED lib/fastodp.cpp)
 add_library(fastodpStatic STATIC lib/fastodp.cpp)
 set_target_properties(fastodpStatic PROPERTIES OUTPUT_NAME fastodp)
 
-target_link_libraries(fastodp cryptopp)
-target_link_libraries(fastodpStatic cryptopp)
+target_link_libraries(fastodp cryptopp pthread)
+target_link_libraries(fastodpStatic cryptopp pthread)
 target_link_libraries(fastdriver cryptopp fastodp)
 
 if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
